@@ -6,9 +6,13 @@ plugins {
     alias(libs.plugins.daggerHiltAndroid) apply false
     alias(libs.plugins.kotlinSerialization) apply false
     alias(libs.plugins.ksp) apply false
+    alias(libs.plugins.spotless) apply false
 }
 
 subprojects {
+    afterEvaluate {
+        project.apply("${project.rootDir}/spotless.gradle")
+    }
     tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
         compilerOptions {
             jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)

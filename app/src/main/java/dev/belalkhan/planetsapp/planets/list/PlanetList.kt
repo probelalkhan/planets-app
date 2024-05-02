@@ -22,14 +22,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemKey
-import dev.belalkhan.planetsapp.R
 import dev.belalkhan.planetsapp.data.db.PlanetEntity
 import dev.belalkhan.planetsapp.planets.planetIcon
 
@@ -42,12 +38,12 @@ fun PlanetList(viewModel: PlanetListViewModel) {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .pullRefresh(pullRefreshState)
+            .pullRefresh(pullRefreshState),
     ) {
         LazyColumn(
             modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.spacedBy(16.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             items(
                 count = planets.itemCount,
@@ -73,14 +69,14 @@ fun PlanetItem(planet: PlanetEntity) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(24.dp)
+            .padding(24.dp),
     ) {
         Image(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(182.dp),
             painter = painterResource(id = planetIcon),
-            contentDescription = planet.name
+            contentDescription = planet.name,
         )
 
         Text(
@@ -91,7 +87,7 @@ fun PlanetItem(planet: PlanetEntity) {
                 .padding(16.dp),
             color = Color.White,
             style = MaterialTheme.typography.titleLarge,
-            text = planet.name
+            text = planet.name,
         )
     }
 }

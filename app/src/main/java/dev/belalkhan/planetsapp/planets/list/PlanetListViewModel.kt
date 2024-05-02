@@ -10,7 +10,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class PlanetListViewModel @Inject constructor(
-    private val pager: Pager<Int, PlanetEntity>
+    pager: Pager<Int, PlanetEntity>,
 ) : ViewModel() {
 
     val planetPagingFlow = pager.flow.cachedIn(viewModelScope)

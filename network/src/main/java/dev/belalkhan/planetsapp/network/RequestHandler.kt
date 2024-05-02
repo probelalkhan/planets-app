@@ -17,7 +17,7 @@ class RequestHandler(myHttpClient: MyHttpClient) {
         method: HttpMethod,
         urlPathSegments: List<Any>,
         body: B? = null,
-        queryParams: Map<String, Any>? = null
+        queryParams: Map<String, Any>? = null,
     ): NetworkResult<R> {
         return withContext(Dispatchers.IO) {
             try {

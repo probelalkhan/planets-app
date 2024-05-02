@@ -12,9 +12,8 @@ import dev.belalkhan.planetsapp.planets.list.PlanetList
 fun PlanetsAppNavHost(navHostController: NavHostController) {
     NavHost(
         navController = navHostController,
-        startDestination = Routes.PlanetList.route
+        startDestination = Routes.PlanetList.route,
     ) {
-
         composable(Routes.PlanetList.route) {
             PlanetList(hiltViewModel())
         }

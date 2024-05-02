@@ -24,7 +24,6 @@ class PlanetsAppHttpClientBuilder {
 
     fun build(): MyHttpClient {
         val httpclient = HttpClient(Apache5) {
-
             expectSuccess = true
 
             engine {
@@ -49,7 +48,7 @@ class PlanetsAppHttpClientBuilder {
                         prettyPrint = true
                         isLenient = true
                         ignoreUnknownKeys = true
-                    }
+                    },
                 )
             }
 
@@ -61,7 +60,6 @@ class PlanetsAppHttpClientBuilder {
                 }
                 level = LogLevel.ALL
             }
-
         }
         return MyHttpClient(httpclient)
     }

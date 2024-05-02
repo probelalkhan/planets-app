@@ -16,5 +16,5 @@ data class PlanetsApiResponse(
     @SerialName("total_pages")
     val totalPages: Int,
     @SerialName("total_records")
-    val totalRecords: Int
+    val totalRecords: Int,
 )

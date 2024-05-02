@@ -8,5 +8,5 @@ data class PlanetEntity(
     @PrimaryKey(autoGenerate = false)
     val uid: String,
     val name: String,
-    val url: String
+    val url: String,
 )

@@ -8,24 +8,23 @@ import androidx.room.withTransaction
 import dev.belalkhan.planetsapp.data.db.PlanetDatabase
 import dev.belalkhan.planetsapp.data.db.PlanetEntity
 import dev.belalkhan.planetsapp.data.toPlanetEntity
-import java.util.concurrent.TimeUnit
 
 @OptIn(ExperimentalPagingApi::class)
 class PlanetRemoteMediator(
     private val db: PlanetDatabase,
-    private val repository: PlanetRepository
+    private val repository: PlanetRepository,
 ) : RemoteMediator<Int, PlanetEntity>() {
 
     override suspend fun initialize(): InitializeAction = InitializeAction.SKIP_INITIAL_REFRESH
 
     override suspend fun load(
         loadType: LoadType,
-        state: PagingState<Int, PlanetEntity>
+        state: PagingState<Int, PlanetEntity>,
     ): MediatorResult {
         val loadKey = when (loadType) {
             LoadType.REFRESH -> 1
             LoadType.PREPEND -> return MediatorResult.Success(
-                endOfPaginationReached = true
+                endOfPaginationReached = true,
             )
 
             LoadType.APPEND -> {
@@ -40,7 +39,7 @@ class PlanetRemoteMediator(
 
         val planets = repository.getPlanets(
             page = loadKey,
-            limit = state.config.pageSize
+            limit = state.config.pageSize,
         )
 
         db.withTransaction {
@@ -52,7 +51,7 @@ class PlanetRemoteMediator(
         }
 
         return MediatorResult.Success(
-            endOfPaginationReached = planets.isEmpty()
+            endOfPaginationReached = planets.isEmpty(),
         )
     }
 }

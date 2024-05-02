@@ -1,7 +1,6 @@
 package dev.belalkhan.planetsapp
 
 import android.content.Context
-import androidx.paging.ExperimentalPagingApi
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.room.Room
@@ -31,7 +30,7 @@ object AppModule {
         return Room.databaseBuilder(
             context,
             PlanetDatabase::class.java,
-            "planet.db"
+            "planet.db",
         ).build()
     }
 
@@ -52,20 +51,20 @@ object AppModule {
     @Singleton
     fun providePlanetsPager(
         db: PlanetDatabase,
-        repository: PlanetRepository
+        repository: PlanetRepository,
     ): Pager<Int, PlanetEntity> {
         return Pager(
             config = PagingConfig(
                 pageSize = 10,
-                initialLoadSize = 10
+                initialLoadSize = 10,
             ),
             remoteMediator = PlanetRemoteMediator(
                 db = db,
-                repository = repository
+                repository = repository,
             ),
             pagingSourceFactory = {
                 db.planetDao.pagingSource()
-            }
+            },
         )
     }
 }

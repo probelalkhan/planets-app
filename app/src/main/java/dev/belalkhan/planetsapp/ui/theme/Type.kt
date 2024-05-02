@@ -15,13 +15,13 @@ val Typography = Typography(
         fontWeight = FontWeight.Normal,
         fontSize = 16.sp,
         lineHeight = 24.sp,
-        letterSpacing = 0.5.sp
+        letterSpacing = 0.5.sp,
     ),
     titleLarge = TextStyle(
         fontFamily = FontFamily(Font(R.font.planet_name_font)),
         fontWeight = FontWeight.Normal,
         fontSize = 38.sp,
         lineHeight = 38.sp,
-        letterSpacing = 10.sp
-    )
+        letterSpacing = 10.sp,
+    ),
 )

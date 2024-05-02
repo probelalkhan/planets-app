@@ -12,5 +12,5 @@ data class PlanetDto(
     val name: String,
 
     @SerialName("url")
-    val url: String
+    val url: String,
 )
