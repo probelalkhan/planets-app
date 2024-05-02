@@ -1,6 +1,7 @@
 package dev.belalkhan.planetsapp.ui.theme
 
 import androidx.compose.material3.Typography
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -16,6 +17,7 @@ val Typography = Typography(
         fontSize = 16.sp,
         lineHeight = 24.sp,
         letterSpacing = 0.5.sp,
+        color = Color.White,
     ),
     titleLarge = TextStyle(
         fontFamily = FontFamily(Font(R.font.planet_name_font)),
@@ -23,5 +25,13 @@ val Typography = Typography(
         fontSize = 38.sp,
         lineHeight = 38.sp,
         letterSpacing = 10.sp,
+        color = Color.White,
+    ),
+    titleMedium = TextStyle(
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.Normal,
+        fontSize = 28.sp,
+        lineHeight = 28.sp,
+        color = Color.White,
     ),
 )

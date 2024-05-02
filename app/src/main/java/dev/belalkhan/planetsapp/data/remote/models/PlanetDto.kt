@@ -1,4 +1,4 @@
-package dev.belalkhan.planetsapp.data.remote
+package dev.belalkhan.planetsapp.data.remote.models
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

@@ -1,5 +1,6 @@
 package dev.belalkhan.planetsapp.planets
 
+import androidx.annotation.DrawableRes
 import dev.belalkhan.planetsapp.R
 
 private val planetIcons = listOf(
@@ -11,5 +12,6 @@ private val planetIcons = listOf(
     R.drawable.planet6,
 )
 
+@get:DrawableRes
 val planetIcon: Int
     get() = planetIcons.random()

@@ -2,6 +2,7 @@ package dev.belalkhan.planetsapp.planets.list
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -30,7 +31,7 @@ import dev.belalkhan.planetsapp.data.db.PlanetEntity
 import dev.belalkhan.planetsapp.planets.planetIcon
 
 @Composable
-fun PlanetList(viewModel: PlanetListViewModel) {
+fun PlanetList(viewModel: PlanetListViewModel, onPlanetClick: (PlanetEntity) -> Unit) {
     val planets = viewModel.planetPagingFlow.collectAsLazyPagingItems()
     val refreshing = planets.loadState.refresh is LoadState.Loading
     val pullRefreshState = rememberPullRefreshState(refreshing, { planets.refresh() })
@@ -51,7 +52,7 @@ fun PlanetList(viewModel: PlanetListViewModel) {
             ) { index ->
                 val planet = planets[index]
                 if (planet != null) {
-                    PlanetItem(planet = planet)
+                    PlanetItem(planet = planet) { onPlanetClick(planet) }
                 }
             }
             item {
@@ -65,11 +66,12 @@ fun PlanetList(viewModel: PlanetListViewModel) {
 }
 
 @Composable
-fun PlanetItem(planet: PlanetEntity) {
+fun PlanetItem(planet: PlanetEntity, onClick: () -> Unit = {}) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(24.dp),
+            .padding(24.dp)
+            .clickable { onClick() },
     ) {
         Image(
             modifier = Modifier
@@ -85,7 +87,6 @@ fun PlanetItem(planet: PlanetEntity) {
                 .clip(RoundedCornerShape(15.dp))
                 .background(Color.Black.copy(alpha = 0.7f))
                 .padding(16.dp),
-            color = Color.White,
             style = MaterialTheme.typography.titleLarge,
             text = planet.name,
         )
