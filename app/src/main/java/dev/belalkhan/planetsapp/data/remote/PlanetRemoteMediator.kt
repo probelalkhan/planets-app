@@ -16,7 +16,7 @@ class PlanetRemoteMediator(
     private val repository: PlanetRepository
 ) : RemoteMediator<Int, PlanetEntity>() {
 
-    override suspend fun initialize(): InitializeAction = InitializeAction.LAUNCH_INITIAL_REFRESH
+    override suspend fun initialize(): InitializeAction = InitializeAction.SKIP_INITIAL_REFRESH
 
     override suspend fun load(
         loadType: LoadType,
