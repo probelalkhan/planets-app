@@ -26,7 +26,8 @@ class DatabaseTests {
     fun createDb() {
         val context = ApplicationProvider.getApplicationContext<Context>()
         db = Room.inMemoryDatabaseBuilder(
-            context, PlanetDatabase::class.java
+            context,
+            PlanetDatabase::class.java,
         ).build()
     }
 
@@ -42,7 +43,7 @@ class DatabaseTests {
         val planetEntities = listOf(
             PlanetEntity("1", "Earth", ""),
             PlanetEntity("2", "Earth", ""),
-            PlanetEntity("3", "Earth", "")
+            PlanetEntity("3", "Earth", ""),
         )
         db.planetDao.upsertAll(planetEntities)
         val result = db.planetDao.pagingSource().load(PagingSource.LoadParams.Refresh(0, 3, false))

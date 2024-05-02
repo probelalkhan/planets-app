@@ -1,6 +1,5 @@
 package dev.belalkhan.planetsapp.data.remote
 
-import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
@@ -9,7 +8,6 @@ import dev.belalkhan.planetsapp.data.db.PlanetDatabase
 import dev.belalkhan.planetsapp.data.db.PlanetEntity
 import dev.belalkhan.planetsapp.data.toPlanetEntity
 
-@OptIn(ExperimentalPagingApi::class)
 class PlanetRemoteMediator(
     private val db: PlanetDatabase,
     private val repository: PlanetRepository,
